@@ -3,8 +3,8 @@ name: aggiorna-formazione
 # Quando gira: a orari fissi (UTC) nei giorni di campionato, piu' avvio manuale.
 # Gli orari sono in UTC: 07,10,13,16 UTC = 09,12,15,18 ora italiana (estate).
 on:
-  schedule:
-    - cron: "0 7,10,13,16 * * 4,5,6,0"   # gio, ven, sab, dom
+  # schedule:
+  #  - cron: "0 7,10,13,16 * * 4,5,6,0"   # gio, ven, sab, dom
   workflow_dispatch: {}                    # bottone "Run" manuale
 
 permissions:
