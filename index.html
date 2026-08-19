@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Formazione fantacalcio</title>
+<style>
+  :root{ --bg:#f5f5f4; --card:#fff; --line:#e7e5e4; --ink:#1c1917; --muted:#78716c;
+         --pitch:#0f6e56; --accent:#185fa5; }
+  *{ box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  body{ margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+        background:var(--bg); color:var(--ink); padding:14px; max-width:520px; margin:0 auto; }
+  .head{ display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:12px; }
+  .lbl{ font-size:13px; color:var(--muted); }
+  .big{ font-size:24px; font-weight:600; }
+  .accent{ color:var(--accent); }
+  .pitch{ background:var(--pitch); border-radius:14px; padding:16px 8px; display:flex;
+          flex-direction:column; gap:16px; }
+  .rowp{ display:flex; justify-content:space-around; }
+  .chip{ display:flex; flex-direction:column; align-items:center; gap:3px; min-width:58px; }
+  .badge{ width:36px; height:36px; border-radius:50%; background:rgba(255,255,255,.94);
+          display:flex; align-items:center; justify-content:center; font-size:11px;
+          font-weight:600; color:var(--pitch); }
+  .cn{ font-size:11px; color:#fff; font-weight:600; white-space:nowrap; }
+  .cp{ font-size:10px; font-weight:600; }
+  .list{ margin-top:14px; display:flex; flex-direction:column; gap:8px; }
+  .item{ background:var(--card); border:1px solid var(--line); border-radius:12px; padding:10px 12px; }
+  .top{ display:flex; justify-content:space-between; align-items:center; }
+  .nm{ font-size:14px; font-weight:600; }
+  .tm{ color:var(--muted); font-weight:400; }
+  .meta{ font-size:13px; color:var(--muted); }
+  .news{ font-size:12px; color:var(--muted); margin-top:4px; }
+  .dot{ display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:6px; }
+  .foot{ text-align:center; font-size:12px; color:var(--muted); margin-top:10px; }
+  .err{ background:#fdecec; color:#a32d2d; border-radius:12px; padding:12px; font-size:14px; }
+</style>
+</head>
+<body>
+  <div id="app"><p class="meta">Carico la formazione…</p></div>
+<script>
+const ROLE_COLOR = {P:"#ef9f27", D:"#378add", C:"#5dcaa5", A:"#d85a30"};
+const pcolor = p => p>=80 ? "#1d9e75" : p>=60 ? "#ba7517" : "#e24b4a";
+
+function chip(pl){
+  return `<div class="chip">
+    <div class="badge">${pl.squadra.slice(0,3).toUpperCase()}</div>
+    <div class="cn">${pl.nome}</div>
+    <div class="cp" style="color:${pcolor(pl.titolarita)}">${pl.titolarita}%</div>
+  </div>`;
+}
+function rowp(cells){ return `<div class="rowp">${cells.map(chip).join("")}</div>`; }
+
+function render(d){
+  const byrole = {P:[],D:[],C:[],A:[]};
+  d.titolari.forEach(p => byrole[p.ruolo].push(p));
+  const pitch = rowp(byrole.A) + rowp(byrole.C) + rowp(byrole.D) + rowp(byrole.P);
+
+  const list = d.titolari.map(p => `
+    <div class="item">
+      <div class="top">
+        <div class="nm"><span class="dot" style="background:${ROLE_COLOR[p.ruolo]}"></span>${p.nome} <span class="tm">${p.squadra}</span></div>
+        <div class="meta">tit ${p.titolarita}% · voto ${p.voto.toFixed(1)}</div>
+      </div>
+      ${p.news ? `<div class="news">${p.news}</div>` : ""}
+    </div>`).join("");
+
+  document.getElementById("app").innerHTML = `
+    <div class="head">
+      <div><div class="lbl">Modulo consigliato</div><div class="big">${d.modulo}</div></div>
+      <div style="text-align:right"><div class="lbl">Punteggio atteso</div><div class="big accent">${d.punteggio_atteso}</div></div>
+    </div>
+    <div class="pitch">${pitch}</div>
+    <div class="list">${list}</div>
+    <div class="foot">aggiornato ${d.aggiornato}</div>`;
+}
+
+fetch("dati.json?" + Date.now())
+  .then(r => { if(!r.ok) throw new Error(r.status); return r.json(); })
+  .then(render)
+  .catch(e => {
+    document.getElementById("app").innerHTML =
+      `<div class="err">Dati non ancora disponibili. Il primo aggiornamento arriva col prossimo giro del job. (${e.message})</div>`;
+  });
+</script>
+</body>
+</html>

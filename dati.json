@@ -1,0 +1,106 @@
+{
+  "modulo": "3-4-1-2",
+  "punteggio_atteso": 59.1,
+  "titolari": [
+    {
+      "nome": "Mandas",
+      "squadra": "Lazio",
+      "ruolo": "P",
+      "titolarita": 90,
+      "voto": 6.0,
+      "stato": "ok",
+      "news": ""
+    },
+    {
+      "nome": "Vasquez",
+      "squadra": "Genoa",
+      "ruolo": "D",
+      "titolarita": 90,
+      "voto": 6.0,
+      "stato": "ok",
+      "news": ""
+    },
+    {
+      "nome": "Gallo",
+      "squadra": "Lecce",
+      "ruolo": "D",
+      "titolarita": 90,
+      "voto": 6.0,
+      "stato": "ok",
+      "news": ""
+    },
+    {
+      "nome": "Rrahmani",
+      "squadra": "Napoli",
+      "ruolo": "D",
+      "titolarita": 90,
+      "voto": 6.0,
+      "stato": "ok",
+      "news": ""
+    },
+    {
+      "nome": "Winks",
+      "squadra": "Cagliari",
+      "ruolo": "C",
+      "titolarita": 90,
+      "voto": 6.0,
+      "stato": "ok",
+      "news": ""
+    },
+    {
+      "nome": "Barella",
+      "squadra": "Inter",
+      "ruolo": "C",
+      "titolarita": 90,
+      "voto": 6.0,
+      "stato": "ok",
+      "news": ""
+    },
+    {
+      "nome": "Vlasic",
+      "squadra": "Torino",
+      "ruolo": "C",
+      "titolarita": 90,
+      "voto": 6.0,
+      "stato": "ok",
+      "news": ""
+    },
+    {
+      "nome": "Cancellieri",
+      "squadra": "Lazio",
+      "ruolo": "A",
+      "titolarita": 85,
+      "voto": 6.0,
+      "stato": "ok",
+      "news": ""
+    },
+    {
+      "nome": "Orsolini",
+      "squadra": "Bologna",
+      "ruolo": "C",
+      "titolarita": 90,
+      "voto": 6.0,
+      "stato": "ok",
+      "news": ""
+    },
+    {
+      "nome": "Politano",
+      "squadra": "Napoli",
+      "ruolo": "C",
+      "titolarita": 90,
+      "voto": 6.0,
+      "stato": "ok",
+      "news": ""
+    },
+    {
+      "nome": "Dovbyk",
+      "squadra": "Bologna",
+      "ruolo": "A",
+      "titolarita": 90,
+      "voto": 6.0,
+      "stato": "ok",
+      "news": ""
+    }
+  ],
+  "aggiornato": "19/08 15:07 (esempio)"
+}
