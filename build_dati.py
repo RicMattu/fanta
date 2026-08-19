@@ -30,7 +30,7 @@ from fanta.optimizer import best_lineup
 from fanta.roster import ROSTER
 from fanta.scraper_fantacalcio import ProbRecord, fetch_html, parse
 
-OUT = Path(__file__).resolve().parent / "web" / "dati.json"
+OUT = Path(__file__).resolve().parent / "dati.json"
 
 
 def _norm(s: str) -> str:
