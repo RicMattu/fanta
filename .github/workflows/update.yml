@@ -30,6 +30,6 @@ jobs:
         run: |
           git config user.name "fanta-bot"
           git config user.email "bot@users.noreply.github.com"
-          git add web/dati.json
+          git add dati.json
           git commit -m "aggiorna formazione" || echo "nessuna modifica"
           git push
