@@ -38,6 +38,10 @@
 <body>
   <div id="app"><p class="meta">Carico la formazione…</p></div>
 <script>
+// >>> METTI QUI il tuo repo, nel formato "utente/repo" (es. "mario/fanta") <<<
+const REPO = "TUONOME/fanta";
+const RUN_URL = `https://github.com/${REPO}/actions/workflows/update.yml`;
+
 const ROLE_COLOR = {P:"#ef9f27", D:"#378add", C:"#5dcaa5", A:"#d85a30"};
 const pcolor = p => p>=80 ? "#1d9e75" : p>=60 ? "#ba7517" : "#e24b4a";
 
@@ -71,7 +75,11 @@ function render(d){
     </div>
     <div class="pitch">${pitch}</div>
     <div class="list">${list}</div>
-    <div class="foot">aggiornato ${d.aggiornato}</div>`;
+    <a href="${RUN_URL}" target="_blank" rel="noopener"
+       style="display:block;text-align:center;margin-top:14px;padding:12px;
+       background:var(--accent);color:#fff;border-radius:12px;font-size:15px;
+       font-weight:600;text-decoration:none;">Aggiorna formazione ↗</a>
+    <div class="foot">aggiornato ${d.aggiornato} · dopo "Run workflow" ricarica questa pagina</div>`;
 }
 
 fetch("dati.json?" + Date.now())
